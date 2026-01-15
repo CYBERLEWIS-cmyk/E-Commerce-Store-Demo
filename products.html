@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lewis.Inc | Products</title>
+    <meta name="description" content="Browse all Lewis.Inc products." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+<header class="header" id="top">
+    <nav class="nav container" aria-label="Primary">
+        <a class="brand" href="index.html" aria-label="Lewis.Inc home">Lewis<span>.Inc</span></a>
+
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="products.html" class="nav-link">PRODUCTS</a></li>
+            <li><a href="#categoriesBlock" class="nav-link">CATEGORIES</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <div class="search">
+                <input id="searchInput" type="search" placeholder="Search..." aria-label="Search products" />
+                <button class="icon-btn" id="searchBtn" aria-label="Search">
+                    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16Zm11 3-6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+
+            <button class="icon-btn cart-btn" id="cartBtn" aria-label="Open cart">
+                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7 7V6a5 5 0 0 1 10 0v1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M6 7h12l1 14H5L6 7Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+                <span class="badge" id="cartCount">0</span>
+            </button>
+
+            <button class="btn btn-dark" id="signInBtn">SIGN IN</button>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="section">
+        <div class="container">
+            <p class="kicker">BROWSE</p>
+            <h1 class="section-title">All Products</h1>
+
+            <div class="toolbar">
+                <div class="filters">
+                    <button class="chip is-active" data-filter="All">All</button>
+                    <button class="chip" data-filter="Watches">Watches</button>
+                    <button class="chip" data-filter="Bags">Bags</button>
+                    <button class="chip" data-filter="Fragrance">Fragrance</button>
+                    <button class="chip" data-filter="Furniture">Furniture</button>
+                    <button class="chip" data-filter="Tech">Tech</button>
+                    <button class="chip" data-filter="Sports">Sports</button>
+                </div>
+
+                <div class="sort">
+                    <label class="sort-label" for="sortSelect">Sort</label>
+                    <select id="sortSelect" class="select">
+                        <option value="newest" selected>Newest</option>
+                        <option value="price_asc">Price: Low → High</option>
+                        <option value="price_desc">Price: High → Low</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="product-grid product-grid-3" id="productGrid"></div>
+        </div>
+    </section>
+
+    <section class="section" id="categoriesBlock">
+        <div class="container">
+            <p class="kicker center">EXPLORE</p>
+            <h2 class="section-title center">Shop by Category</h2>
+            <div class="category-grid" id="categoryGrid"></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-bottom">
+            <p>© <span id="year"></span> Lewis.Inc. Portfolio demo store.</p>
+        </div>
+    </footer>
+</main>
+
+<!-- Product modal (optional; UI will route to product page) -->
+<div class="modal" id="productModal" aria-hidden="true" role="dialog">
+    <div class="modal-backdrop" data-close="true"></div>
+    <div class="modal-card" role="document">
+        <button class="icon-btn modal-close" aria-label="Close" data-close="true">✕</button>
+        <div class="modal-body" id="modalBody"></div>
+    </div>
+</div>
+
+<!-- Cart drawer -->
+<aside class="drawer" id="cartDrawer" aria-hidden="true" aria-label="Shopping cart">
+    <div class="drawer-backdrop" data-close-cart="true"></div>
+    <div class="drawer-panel" role="dialog">
+        <div class="drawer-head">
+            <h3>Shopping Cart</h3>
+            <button class="icon-btn" aria-label="Close cart" data-close-cart="true">✕</button>
+        </div>
+        <div class="drawer-body" id="cartItems"></div>
+        <div class="drawer-foot">
+            <div class="totals">
+                <span>Subtotal</span>
+                <strong id="cartSubtotal">$0</strong>
+            </div>
+            <button class="btn btn-dark btn-pill w-full" id="checkoutBtn">CHECKOUT</button>
+            <p class="muted small">Portfolio demo: checkout is simulated.</p>
+        </div>
+    </div>
+</aside>
+
+<!-- Sign in modal -->
+<div class="modal" id="signInModal" aria-hidden="true" role="dialog" aria-label="Sign in">
+    <div class="modal-backdrop" data-close-signin="true"></div>
+    <div class="modal-card modal-card-sm" role="document">
+        <button class="icon-btn modal-close" aria-label="Close" data-close-signin="true">✕</button>
+        <div class="modal-body">
+            <p class="kicker">ACCOUNT</p>
+            <h3 class="modal-title">Sign in</h3>
+            <p class="muted">Demo only for portfolio UI.</p>
+
+            <form class="form" id="signInForm">
+                <label>Email <input type="email" placeholder="you@example.com" required></label>
+                <label>Password <input type="password" placeholder="••••••••" required></label>
+                <button class="btn btn-dark btn-pill w-full" type="submit">SIGN IN</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/store.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/page.js"></script>
+</body>
+</html>

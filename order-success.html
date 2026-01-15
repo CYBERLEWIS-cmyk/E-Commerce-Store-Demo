@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lewis.Inc | Order Confirmed</title>
+    <meta name="description" content="Order confirmation (portfolio demo)." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+<header class="header">
+    <nav class="nav container" aria-label="Primary">
+        <a class="brand" href="index.html">Lewis<span>.Inc</span></a>
+
+        <ul class="nav-links">
+            <li><a href="products.html" class="nav-link">PRODUCTS</a></li>
+            <li><a href="products.html#categoriesBlock" class="nav-link">CATEGORIES</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <button class="icon-btn cart-btn" id="cartBtn" aria-label="Open cart">
+                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7 7V6a5 5 0 0 1 10 0v1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M6 7h12l1 14H5L6 7Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+                <span class="badge" id="cartCount">0</span>
+            </button>
+            <a class="btn btn-dark" href="products.html">SHOP MORE</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="section">
+        <div class="container">
+            <p class="kicker">CONFIRMED</p>
+            <h1 class="section-title">Order Successful</h1>
+
+            <div class="checkout-grid">
+                <div class="checkout-col">
+                    <div class="card">
+                        <div class="success-badge">
+                            <span class="success-dot" aria-hidden="true"></span>
+                            <strong>Payment Authorized</strong>
+                        </div>
+
+                        <p class="muted" style="line-height:1.9; margin-top:12px;">
+                            Thank you for shopping with <strong>Lewis.Inc</strong>. Your order has been placed successfully.
+                            This is a portfolio demo—no real payment was processed.
+                        </p>
+
+                        <div class="divider"></div>
+
+                        <div class="totals">
+                            <span>Order ID</span>
+                            <strong id="orderId">—</strong>
+                        </div>
+
+                        <div class="totals">
+                            <span>Status</span>
+                            <strong>Processing</strong>
+                        </div>
+
+                        <div class="totals">
+                            <span>Estimated delivery</span>
+                            <strong>1–5 business days</strong>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="toolbar">
+                            <a class="btn btn-outline btn-pill" href="products.html">CONTINUE SHOPPING</a>
+                            <a class="btn btn-dark btn-pill" href="index.html">BACK HOME</a>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="checkout-col">
+                    <div class="card sticky">
+                        <h3 class="card-title">Order Summary</h3>
+
+                        <div id="orderItems" class="summary-items"></div>
+
+                        <div class="divider"></div>
+
+                        <div class="totals">
+                            <span>Subtotal</span>
+                            <strong id="orderSubtotal">$0</strong>
+                        </div>
+
+                        <div class="totals">
+                            <span>Delivery</span>
+                            <strong id="orderDelivery">$0</strong>
+                        </div>
+
+                        <div class="totals totals-strong">
+                            <span>Total</span>
+                            <strong id="orderTotal">$0</strong>
+                        </div>
+
+                        <p class="muted small mt-12">
+                            A confirmation email would normally be sent here (demo).
+                        </p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-bottom">
+            <p>© <span id="year"></span> Lewis.Inc. Portfolio demo store.</p>
+        </div>
+    </footer>
+</main>
+
+<!-- Cart drawer -->
+<aside class="drawer" id="cartDrawer" aria-hidden="true" aria-label="Shopping cart">
+    <div class="drawer-backdrop" data-close-cart="true"></div>
+    <div class="drawer-panel" role="dialog">
+        <div class="drawer-head">
+            <h3>Shopping Cart</h3>
+            <button class="icon-btn" aria-label="Close cart" data-close-cart="true">✕</button>
+        </div>
+        <div class="drawer-body" id="cartItems"></div>
+        <div class="drawer-foot">
+            <div class="totals">
+                <span>Subtotal</span>
+                <strong id="cartSubtotal">$0</strong>
+            </div>
+            <button class="btn btn-dark btn-pill w-full" id="checkoutBtn">CHECKOUT</button>
+            <p class="muted small">Portfolio demo: checkout is simulated.</p>
+        </div>
+    </div>
+</aside>
+
+<script src="js/data.js"></script>
+<script src="js/store.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/page.js"></script>
+</body>
+</html>

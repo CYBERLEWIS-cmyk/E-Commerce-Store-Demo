@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lewis.Inc | Checkout</title>
+  <meta name="description" content="Lewis.Inc checkout (portfolio demo)." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+<header class="header">
+  <nav class="nav container" aria-label="Primary">
+    <a class="brand" href="index.html">Lewis<span>.Inc</span></a>
+
+    <ul class="nav-links">
+      <li><a href="products.html" class="nav-link">PRODUCTS</a></li>
+      <li><a href="products.html#categoriesBlock" class="nav-link">CATEGORIES</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a class="btn btn-outline" href="products.html">CONTINUE SHOPPING</a>
+      <button class="icon-btn cart-btn" id="cartBtn" aria-label="Open cart">
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 7V6a5 5 0 0 1 10 0v1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M6 7h12l1 14H5L6 7Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+        <span class="badge" id="cartCount">0</span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="section">
+    <div class="container">
+      <p class="kicker">CHECKOUT</p>
+      <h1 class="section-title">Secure Checkout</h1>
+
+      <div class="checkout-grid">
+        <div class="checkout-col">
+          <div class="card">
+            <h3 class="card-title">Shipping Details</h3>
+
+            <form class="form" id="checkoutForm">
+              <div class="form-2">
+                <label>First name
+                  <input required name="firstName" placeholder="Lewis" />
+                </label>
+                <label>Last name
+                  <input required name="lastName" placeholder="Inc" />
+                </label>
+              </div>
+
+              <label>Email
+                <input required type="email" name="email" placeholder="you@example.com" />
+              </label>
+
+              <label>Phone
+                <input required name="phone" placeholder="+27 ..." />
+              </label>
+
+              <label>Address
+                <input required name="address" placeholder="Street address" />
+              </label>
+
+              <div class="form-2">
+                <label>City
+                  <input required name="city" placeholder="Cape Town" />
+                </label>
+                <label>Postal Code
+                  <input required name="postal" placeholder="8000" />
+                </label>
+              </div>
+
+              <label>Delivery Method</label>
+              <div class="radio-group">
+                <label class="radio">
+                  <input type="radio" name="delivery" value="standard" checked />
+                  <span>Standard (3–5 days)</span>
+                </label>
+                <label class="radio">
+                  <input type="radio" name="delivery" value="express" />
+                  <span>Express (1–2 days)</span>
+                </label>
+              </div>
+
+              <div class="divider"></div>
+
+              <h3 class="card-title">Payment (Demo)</h3>
+
+              <label>Card number
+                <input required name="card" inputmode="numeric" placeholder="4242 4242 4242 4242" />
+              </label>
+
+              <div class="form-3">
+                <label>Expiry
+                  <input required name="exp" placeholder="MM/YY" />
+                </label>
+                <label>CVV
+                  <input required name="cvv" inputmode="numeric" placeholder="123" />
+                </label>
+                <label>Name on card
+                  <input required name="cardName" placeholder="Lewis Inc" />
+                </label>
+              </div>
+
+              <button class="btn btn-dark btn-pill w-full" type="submit">
+                PLACE ORDER
+              </button>
+
+              <p class="muted small center mt-12">
+                Portfolio demo — no real payments are processed.
+              </p>
+            </form>
+          </div>
+        </div>
+
+        <aside class="checkout-col">
+          <div class="card sticky">
+            <h3 class="card-title">Order Summary</h3>
+
+            <div id="checkoutItems" class="summary-items"></div>
+
+            <div class="divider"></div>
+
+            <div class="totals">
+              <span>Subtotal</span>
+              <strong id="summarySubtotal">$0</strong>
+            </div>
+
+            <div class="totals">
+              <span>Delivery</span>
+              <strong id="summaryDelivery">$0</strong>
+            </div>
+
+            <div class="totals totals-strong">
+              <span>Total</span>
+              <strong id="summaryTotal">$0</strong>
+            </div>
+
+            <a class="btn btn-outline btn-pill w-full mt-12" href="products.html#cart">
+              EDIT CART
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> Lewis.Inc. Portfolio demo store.</p>
+    </div>
+  </footer>
+</main>
+
+<!-- Cart drawer -->
+<aside class="drawer" id="cartDrawer" aria-hidden="true" aria-label="Shopping cart">
+  <div class="drawer-backdrop" data-close-cart="true"></div>
+  <div class="drawer-panel" role="dialog">
+    <div class="drawer-head">
+      <h3>Shopping Cart</h3>
+      <button class="icon-btn" aria-label="Close cart" data-close-cart="true">✕</button>
+    </div>
+    <div class="drawer-body" id="cartItems"></div>
+    <div class="drawer-foot">
+      <div class="totals">
+        <span>Subtotal</span>
+        <strong id="cartSubtotal">$0</strong>
+      </div>
+      <button class="btn btn-dark btn-pill w-full" id="checkoutBtn">CHECKOUT</button>
+      <p class="muted small">Portfolio demo: checkout is simulated.</p>
+    </div>
+  </div>
+</aside>
+
+<script src="js/data.js"></script>
+<script src="js/store.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/page.js"></script>
+</body>
+</html>
